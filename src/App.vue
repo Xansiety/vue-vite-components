@@ -1,6 +1,14 @@
  <script setup>
+  import { ref } from 'vue'
   import ButtonComponent from './components/ButtonComponent.vue'
   import BlogPostComponent from './components/BlogPostComponent.vue'
+
+  const posts = ref([
+      { id: 1, title: "Post 01", body: "Descrión del post 01" },
+      { id: 2, title: "Post 02", body: "Descrión del post 02" },
+      { id: 3, title: "Post 03", body: "Descrión del post 03"  },
+      { id: 3, title: "Post 04" },
+  ]);
 
  </script> 
 
@@ -11,10 +19,8 @@
    <!-- PascalCase: <ButtonComponent /> -->
    <ButtonComponent />
    <br>
-   <BlogPostComponent title="Post 01" :id='1' body="descipcion 01" colorText="primary"/>
-   <BlogPostComponent title="Post 02" :id='2' body="descipcion 02" colorText="secondary"/>
-   <BlogPostComponent title="Post 03" :id='3' body="descipcion 03" colorText="success"/>
-   <BlogPostComponent title="Post 04" :id='4' colorText="primary"/>
+
+   <BlogPostComponent v-for="post in posts" :key="post.id" :title="post.title" :id='post.id' :body="post.body" colorText="primary"/> 
 </div> 
    <!-- or  -->
 
