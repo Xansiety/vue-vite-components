@@ -7,8 +7,11 @@ import { ref } from 'vue'
 </script> 
 
 <template> 
-     <h1> Counter  Component</h1> <br> 
-        <button @click="increment"> Increment {{counter}}</button>
+<div class="card">
+     <div class="card-title text-black">Contador componente</div>
+     <div class="card-body"> <button @click="increment"> Increment {{counter}}</button>
+     </div>
+</div>
 </template> 
 
 <style lang='scss' scoped> 
