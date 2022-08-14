@@ -16,7 +16,7 @@
   //pagination
   const pagination = ref({
     start: 0,
-    end: itemsPorPagina.value 
+    end: itemsPorPagina.value, 
   })
  
   const cambiarFavorito = (title) => {
@@ -50,8 +50,11 @@
        @nextName="next"
        @prevName="previous" 
        @currentPageName="currentPage"
+       :inicio="pagination.start"
+       :fin="pagination.end"
+       :maxLength="posts.length"
       />
-      
+
       <div class="card-body"> 
             <!--  <BlogPostComponent v-for="post in posts" :key="post.id" :title="post.title" :id='post.id' :body="post.body" colorText="primary"
             @cambiarFavoritoNombre="cambiarFavorito" /> --> <!-- Enviamos un evento personalizado para que nuestro componente hijo, pueda afectar a muestro componente padre-->
