@@ -2,11 +2,14 @@
   import { ref } from 'vue' 
   import BlogPostComponent from './components/BlogPostComponent.vue'
   import ButtonsPaginate from './components/ButtonsPaginate.vue' 
+  import loadingComponent from './components/loadingComponent.vue'
   
   const posts = ref([])
   const favorito = ref('');
 
   const itemsPorPagina = ref(10) 
+
+  const isLoading = ref(true)
 
   // const currentPage = (number) => {
   //   console.log(number);
@@ -39,11 +42,18 @@
     posts.value = data
   })
   .catch(error => console.log(error)) 
+  .finally(() => {
+    // setTimeout(() => {
+      isLoading.value = false
+    // }, 2000) 
+  })
  </script> 
  
 <template> 
   <div class="container"> 
-    <div class="card mt-3 ">
+    <loadingComponent class="mt-10" v-if="isLoading" />
+
+    <div class="card mt-3" v-else>
       <div class="card-title"><h2>Mi Post Favorito: {{favorito ? favorito : 'No hay ningún post fijado'}}</h2></div>
 
       <ButtonsPaginate 
